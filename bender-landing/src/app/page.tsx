@@ -1,8 +1,7 @@
 "use client";
 
 import React, { useState } from 'react';
-import { Play, ShoppingCart, Menu, X, Guitar, Zap, Shield, Star, Send } from 'lucide-react';
-import { Alert, AlertDescription } from '@/components/ui/alert';
+import { Play, ShoppingCart, Menu, X, ArrowRight, Check, Star, Send } from 'lucide-react';
 
 const Home = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -35,26 +34,29 @@ const Home = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-900 via-gray-800 to-gray-900 text-white">
+    <div className="min-h-screen bg-black text-white">
       {/* Navigation */}
-      <nav className="fixed top-0 w-full bg-gray-900/95 backdrop-blur-sm z-50 border-b border-gray-700">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-16">
+      <nav className="fixed top-0 w-full bg-black/80 backdrop-blur-lg z-50 border-b border-neutral-800">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <div className="flex justify-between items-center h-20">
             <div className="flex items-center">
-              <Guitar className="h-8 w-8 text-blue-500 mr-2" />
-              <span className="text-xl font-bold">The Bender</span>
-              <span className="text-sm text-gray-400 ml-2">by Coats Music</span>
+              <div className="w-10 h-10 bg-gradient-to-r from-blue-600 to-blue-400 rounded-lg flex items-center justify-center mr-3">
+                <span className="text-white font-bold text-lg">B</span>
+              </div>
+              <div>
+                <span className="text-2xl font-light tracking-wide">THE BENDER</span>
+                <div className="text-xs text-neutral-400 font-light tracking-widest">BY COATS MUSIC</div>
+              </div>
             </div>
             
             {/* Desktop Menu */}
-            <div className="hidden md:flex space-x-8">
-              <button onClick={() => scrollToSection('features')} className="hover:text-blue-400 transition">Features</button>
-              <button onClick={() => scrollToSection('demo')} className="hover:text-blue-400 transition">Demo</button>
-              <button onClick={() => scrollToSection('specs')} className="hover:text-blue-400 transition">Specs</button>
-              <button onClick={() => scrollToSection('contact')} className="hover:text-blue-400 transition">Contact</button>
-              <a href="#" className="bg-blue-600 px-4 py-2 rounded-lg hover:bg-blue-700 transition flex items-center">
-                <ShoppingCart className="h-4 w-4 mr-2" />
-                Buy Now
+            <div className="hidden md:flex items-center space-x-8">
+              <button onClick={() => scrollToSection('features')} className="text-neutral-300 hover:text-white transition-colors text-sm font-medium">FEATURES</button>
+              <button onClick={() => scrollToSection('demo')} className="text-neutral-300 hover:text-white transition-colors text-sm font-medium">DEMO</button>
+              <button onClick={() => scrollToSection('specs')} className="text-neutral-300 hover:text-white transition-colors text-sm font-medium">SPECS</button>
+              <button onClick={() => scrollToSection('contact')} className="text-neutral-300 hover:text-white transition-colors text-sm font-medium">CONTACT</button>
+              <a href="#" className="bg-white text-black px-6 py-3 rounded-sm hover:bg-neutral-200 transition-colors font-medium text-sm tracking-wide">
+                ORDER NOW
               </a>
             </div>
 
@@ -67,15 +69,14 @@ const Home = () => {
 
         {/* Mobile Menu */}
         {isMenuOpen && (
-          <div className="md:hidden bg-gray-800 border-t border-gray-700">
-            <div className="px-4 py-4 space-y-3">
-              <button onClick={() => scrollToSection('features')} className="block w-full text-left hover:text-blue-400">Features</button>
-              <button onClick={() => scrollToSection('demo')} className="block w-full text-left hover:text-blue-400">Demo</button>
-              <button onClick={() => scrollToSection('specs')} className="block w-full text-left hover:text-blue-400">Specs</button>
-              <button onClick={() => scrollToSection('contact')} className="block w-full text-left hover:text-blue-400">Contact</button>
-              <a href="#" className="bg-blue-600 px-4 py-2 rounded-lg hover:bg-blue-700 transition flex items-center justify-center">
-                <ShoppingCart className="h-4 w-4 mr-2" />
-                Buy Now
+          <div className="md:hidden bg-black border-t border-neutral-800">
+            <div className="px-6 py-6 space-y-4">
+              <button onClick={() => scrollToSection('features')} className="block w-full text-left text-neutral-300 hover:text-white font-medium">FEATURES</button>
+              <button onClick={() => scrollToSection('demo')} className="block w-full text-left text-neutral-300 hover:text-white font-medium">DEMO</button>
+              <button onClick={() => scrollToSection('specs')} className="block w-full text-left text-neutral-300 hover:text-white font-medium">SPECS</button>
+              <button onClick={() => scrollToSection('contact')} className="block w-full text-left text-neutral-300 hover:text-white font-medium">CONTACT</button>
+              <a href="#" className="bg-white text-black px-6 py-3 rounded-sm hover:bg-neutral-200 transition-colors font-medium text-sm tracking-wide inline-block">
+                ORDER NOW
               </a>
             </div>
           </div>
@@ -83,123 +84,152 @@ const Home = () => {
       </nav>
 
       {/* Hero Section */}
-      <section className="pt-24 pb-12 px-4 sm:px-6 lg:px-8">
+      <section className="pt-32 pb-20 px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            <div className="space-y-6">
-              <h1 className="text-4xl md:text-6xl font-bold leading-tight">
-                Revolutionary Multi-String 
-                <span className="text-blue-500"> Guitar Bender</span>
-              </h1>
-              <p className="text-xl text-gray-300">
-                Transform your sound with The Bender&#39;s innovative non-invasive design. 
-                Professional-grade quality meets unmatched versatility.
-              </p>
-              <div className="flex items-center space-x-6">
-                <div>
-                  <p className="text-3xl font-bold text-blue-500">$490</p>
-                  <p className="text-sm text-gray-400">Professional Edition</p>
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
+            <div className="space-y-8">
+              <div className="space-y-6">
+                <div className="inline-flex items-center px-4 py-2 bg-neutral-900 rounded-full text-sm text-neutral-300">
+                  <div className="w-2 h-2 bg-blue-500 rounded-full mr-2"></div>
+                  Now Available
                 </div>
-                <a href="#" className="bg-blue-600 px-6 py-3 rounded-lg hover:bg-blue-700 transition flex items-center text-lg">
-                  <ShoppingCart className="h-5 w-5 mr-2" />
-                  Order Now
+                <h1 className="text-5xl lg:text-7xl font-light leading-tight tracking-tight">
+                  Redefine Your 
+                  <span className="block text-transparent bg-gradient-to-r from-blue-600 to-blue-400 bg-clip-text">
+                    Sound
+                  </span>
+                </h1>
+                <p className="text-xl text-neutral-400 leading-relaxed max-w-lg">
+                  The world's first non-invasive multi-string guitar bender. 
+                  Engineered for professionals who demand perfection.
+                </p>
+              </div>
+              
+              <div className="flex items-center space-x-8">
+                <div className="space-y-1">
+                  <div className="text-4xl font-light">$490</div>
+                  <div className="text-sm text-neutral-500 uppercase tracking-wide">Professional Edition</div>
+                </div>
+                <a href="#" className="group bg-white text-black px-8 py-4 rounded-sm hover:bg-neutral-200 transition-all flex items-center font-medium">
+                  ORDER NOW
+                  <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
                 </a>
               </div>
-              <div className="flex space-x-4 pt-4">
+              
+              <div className="flex items-center space-x-6 pt-4">
                 <div className="flex items-center">
-                  <Star className="h-5 w-5 text-yellow-500 fill-current" />
-                  <Star className="h-5 w-5 text-yellow-500 fill-current" />
-                  <Star className="h-5 w-5 text-yellow-500 fill-current" />
-                  <Star className="h-5 w-5 text-yellow-500 fill-current" />
-                  <Star className="h-5 w-5 text-yellow-500 fill-current" />
-                  <span className="ml-2 text-gray-300">5.0 (127 reviews)</span>
+                  {[...Array(5)].map((_, i) => (
+                    <Star key={i} className="h-4 w-4 fill-amber-500 text-amber-500" />
+                  ))}
+                  <span className="ml-3 text-neutral-400 text-sm">5.0 • 127 reviews</span>
                 </div>
               </div>
             </div>
-            <div className="bg-gray-700 rounded-lg h-96 flex items-center justify-center">
-              <div className="text-center">
-                <Guitar className="h-24 w-24 mx-auto mb-4 text-gray-500" />
-                <p className="text-gray-400">Product Image Placeholder</p>
+            
+            <div className="relative">
+              <div className="aspect-square bg-gradient-to-br from-neutral-900 to-neutral-800 rounded-2xl p-12 flex items-center justify-center">
+                <div className="text-center space-y-4">
+                  <div className="w-24 h-24 bg-gradient-to-r from-blue-600 to-blue-400 rounded-full mx-auto flex items-center justify-center">
+                    <div className="w-12 h-12 bg-black rounded-full flex items-center justify-center">
+                      <div className="w-6 h-6 bg-white rounded-full"></div>
+                    </div>
+                  </div>
+                  <div className="text-neutral-500 text-sm">Product visualization</div>
+                </div>
               </div>
+              <div className="absolute -top-4 -right-4 w-8 h-8 bg-blue-600 rounded-full"></div>
+              <div className="absolute -bottom-4 -left-4 w-6 h-6 bg-blue-400 rounded-full"></div>
             </div>
           </div>
         </div>
       </section>
 
       {/* Features Section */}
-      <section id="features" className="py-16 px-4 sm:px-6 lg:px-8 bg-gray-800/50">
+      <section id="features" className="py-24 px-6 lg:px-8 bg-neutral-950">
         <div className="max-w-7xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">Why Choose The Bender?</h2>
-          <div className="grid md:grid-cols-3 gap-8">
-            <div className="bg-gray-700/50 p-6 rounded-lg">
-              <Zap className="h-12 w-12 text-blue-500 mb-4" />
-              <h3 className="text-xl font-bold mb-2">Non-Invasive Installation</h3>
-              <p className="text-gray-300">No drilling or permanent modifications required. Install in minutes, not hours.</p>
-            </div>
-            <div className="bg-gray-700/50 p-6 rounded-lg">
-              <Guitar className="h-12 w-12 text-blue-500 mb-4" />
-              <h3 className="text-xl font-bold mb-2">Multi-String Capability</h3>
-              <p className="text-gray-300">Bend multiple strings simultaneously for unprecedented creative possibilities.</p>
-            </div>
-            <div className="bg-gray-700/50 p-6 rounded-lg">
-              <Shield className="h-12 w-12 text-blue-500 mb-4" />
-              <h3 className="text-xl font-bold mb-2">Professional Durability</h3>
-              <p className="text-gray-300">Tour-ready construction built to withstand the demands of professional musicians.</p>
-            </div>
+          <div className="text-center mb-20">
+            <h2 className="text-4xl lg:text-5xl font-light mb-6">Engineered for Excellence</h2>
+            <p className="text-xl text-neutral-400 max-w-2xl mx-auto">
+              Every component designed and tested to meet the exacting standards of professional musicians
+            </p>
           </div>
-          <div className="grid md:grid-cols-3 gap-8 mt-8">
-            <div className="bg-gray-700/50 p-6 rounded-lg">
-              <div className="h-12 w-12 bg-blue-500/20 rounded-lg flex items-center justify-center mb-4">
-                <span className="text-2xl">🎸</span>
+          
+          <div className="grid lg:grid-cols-3 gap-8">
+            <div className="group p-8 rounded-lg bg-neutral-900/50 hover:bg-neutral-900 transition-all duration-300">
+              <div className="w-12 h-12 bg-gradient-to-r from-blue-600 to-blue-400 rounded-lg flex items-center justify-center mb-6">
+                <div className="w-6 h-6 border-2 border-white rounded-sm"></div>
               </div>
-              <h3 className="text-xl font-bold mb-2">Integrated Stand</h3>
-              <p className="text-gray-300">Built-in guitar stand functionality for added convenience during practice and performance.</p>
+              <h3 className="text-xl font-medium mb-3">Non-Invasive Installation</h3>
+              <p className="text-neutral-400 leading-relaxed">
+                Zero modifications to your instrument. Install in minutes with precision-engineered clamps that protect your guitar's finish.
+              </p>
             </div>
-            <div className="bg-gray-700/50 p-6 rounded-lg">
-              <div className="h-12 w-12 bg-blue-500/20 rounded-lg flex items-center justify-center mb-4">
-                <span className="text-2xl">⚡</span>
+            
+            <div className="group p-8 rounded-lg bg-neutral-900/50 hover:bg-neutral-900 transition-all duration-300">
+              <div className="w-12 h-12 bg-gradient-to-r from-blue-600 to-blue-400 rounded-lg flex items-center justify-center mb-6">
+                <div className="flex space-x-1">
+                  <div className="w-1 h-6 bg-white rounded-full"></div>
+                  <div className="w-1 h-6 bg-white rounded-full"></div>
+                  <div className="w-1 h-6 bg-white rounded-full"></div>
+                </div>
               </div>
-              <h3 className="text-xl font-bold mb-2">Smooth Operation</h3>
-              <p className="text-gray-300">Precision-engineered mechanism ensures consistent, reliable bending action every time.</p>
+              <h3 className="text-xl font-medium mb-3">Multi-String Capability</h3>
+              <p className="text-neutral-400 leading-relaxed">
+                Simultaneous bending of multiple strings opens new creative possibilities previously impossible with traditional techniques.
+              </p>
             </div>
-            <div className="bg-gray-700/50 p-6 rounded-lg">
-              <div className="h-12 w-12 bg-blue-500/20 rounded-lg flex items-center justify-center mb-4">
-                <span className="text-2xl">🎯</span>
+            
+            <div className="group p-8 rounded-lg bg-neutral-900/50 hover:bg-neutral-900 transition-all duration-300">
+              <div className="w-12 h-12 bg-gradient-to-r from-blue-600 to-blue-400 rounded-lg flex items-center justify-center mb-6">
+                <div className="w-6 h-6 border-2 border-white rounded-full flex items-center justify-center">
+                  <div className="w-2 h-2 bg-white rounded-full"></div>
+                </div>
               </div>
-              <h3 className="text-xl font-bold mb-2">Universal Fit</h3>
-              <p className="text-gray-300">Compatible with most electric guitar models without the need for custom modifications.</p>
+              <h3 className="text-xl font-medium mb-3">Professional Durability</h3>
+              <p className="text-neutral-400 leading-relaxed">
+                Aerospace-grade aluminum construction tested to withstand the rigors of professional touring and studio use.
+              </p>
             </div>
           </div>
         </div>
       </section>
 
       {/* Demo Section */}
-      <section id="demo" className="py-16 px-4 sm:px-6 lg:px-8">
+      <section id="demo" className="py-24 px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">See It In Action</h2>
-          <div className="grid md:grid-cols-2 gap-8">
-            <div className="bg-gray-700 rounded-lg h-64 flex items-center justify-center cursor-pointer hover:bg-gray-600 transition group">
-              <div className="text-center">
-                <div className="relative">
-                  <Play className="h-16 w-16 mx-auto mb-4 text-gray-400 group-hover:text-blue-400 transition" />
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="h-20 w-20 bg-blue-500/20 rounded-full animate-ping"></div>
+          <div className="text-center mb-16">
+            <h2 className="text-4xl lg:text-5xl font-light mb-6">See It In Action</h2>
+            <p className="text-xl text-neutral-400">Watch professionals demonstrate The Bender's capabilities</p>
+          </div>
+          
+          <div className="grid lg:grid-cols-2 gap-8">
+            <div className="group relative overflow-hidden rounded-lg bg-neutral-900 aspect-video cursor-pointer">
+              <div className="absolute inset-0 bg-gradient-to-br from-blue-600/20 to-blue-400/20 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+              <div className="flex items-center justify-center h-full">
+                <div className="text-center space-y-4">
+                  <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center mx-auto group-hover:scale-110 transition-transform">
+                    <Play className="h-6 w-6 text-black ml-1" />
+                  </div>
+                  <div className="space-y-2">
+                    <h3 className="text-lg font-medium">Installation Guide</h3>
+                    <p className="text-sm text-neutral-400">Step-by-step professional installation</p>
                   </div>
                 </div>
-                <p className="text-gray-300 font-medium">Installation Tutorial</p>
-                <p className="text-sm text-gray-500 mt-1">Learn how to install in under 30 minutes</p>
               </div>
             </div>
-            <div className="bg-gray-700 rounded-lg h-64 flex items-center justify-center cursor-pointer hover:bg-gray-600 transition group">
-              <div className="text-center">
-                <div className="relative">
-                  <Play className="h-16 w-16 mx-auto mb-4 text-gray-400 group-hover:text-blue-400 transition" />
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="h-20 w-20 bg-blue-500/20 rounded-full animate-ping"></div>
+            
+            <div className="group relative overflow-hidden rounded-lg bg-neutral-900 aspect-video cursor-pointer">
+              <div className="absolute inset-0 bg-gradient-to-br from-blue-600/20 to-blue-400/20 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+              <div className="flex items-center justify-center h-full">
+                <div className="text-center space-y-4">
+                  <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center mx-auto group-hover:scale-110 transition-transform">
+                    <Play className="h-6 w-6 text-black ml-1" />
+                  </div>
+                  <div className="space-y-2">
+                    <h3 className="text-lg font-medium">Performance Demo</h3>
+                    <p className="text-sm text-neutral-400">Professional musicians showcase advanced techniques</p>
                   </div>
                 </div>
-                <p className="text-gray-300 font-medium">Performance Demo</p>
-                <p className="text-sm text-gray-500 mt-1">Watch professional musicians showcase The Bender</p>
               </div>
             </div>
           </div>
@@ -207,145 +237,150 @@ const Home = () => {
       </section>
 
       {/* Specifications Section */}
-      <section id="specs" className="py-16 px-4 sm:px-6 lg:px-8 bg-gray-800/50">
+      <section id="specs" className="py-24 px-6 lg:px-8 bg-neutral-950">
         <div className="max-w-7xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">Technical Specifications</h2>
-          <div className="max-w-3xl mx-auto">
-            <div className="bg-gray-700/50 rounded-lg p-8">
-              <div className="grid md:grid-cols-2 gap-6">
-                <div className="space-y-4">
-                  <div className="border-b border-gray-600 pb-4">
-                    <h4 className="text-sm text-gray-400 uppercase mb-1">Compatibility</h4>
-                    <p className="text-lg">Universal fit for most electric guitars</p>
-                  </div>
-                  <div className="border-b border-gray-600 pb-4">
-                    <h4 className="text-sm text-gray-400 uppercase mb-1">Installation Time</h4>
-                    <p className="text-lg">Under 30 minutes</p>
-                  </div>
-                  <div className="border-b border-gray-600 pb-4">
-                    <h4 className="text-sm text-gray-400 uppercase mb-1">Weight</h4>
-                    <p className="text-lg">Less than 1 lb (450g)</p>
-                  </div>
+          <div className="text-center mb-16">
+            <h2 className="text-4xl lg:text-5xl font-light mb-6">Technical Specifications</h2>
+            <p className="text-xl text-neutral-400">Precision engineering meets uncompromising quality</p>
+          </div>
+          
+          <div className="max-w-4xl mx-auto">
+            <div className="grid lg:grid-cols-2 gap-12">
+              <div className="space-y-8">
+                <div className="border-b border-neutral-800 pb-6">
+                  <h4 className="text-sm text-neutral-500 uppercase tracking-wide mb-2">Compatibility</h4>
+                  <p className="text-lg">Universal fit for electric guitars</p>
                 </div>
-                <div className="space-y-4">
-                  <div className="border-b border-gray-600 pb-4">
-                    <h4 className="text-sm text-gray-400 uppercase mb-1">Materials</h4>
-                    <p className="text-lg">Aircraft-grade aluminum</p>
-                  </div>
-                  <div className="border-b border-gray-600 pb-4">
-                    <h4 className="text-sm text-gray-400 uppercase mb-1">Bend Range</h4>
-                    <p className="text-lg">Up to 2 full steps</p>
-                  </div>
-                  <div className="border-b border-gray-600 pb-4">
-                    <h4 className="text-sm text-gray-400 uppercase mb-1">Warranty</h4>
-                    <p className="text-lg">2-year manufacturer warranty</p>
-                  </div>
+                <div className="border-b border-neutral-800 pb-6">
+                  <h4 className="text-sm text-neutral-500 uppercase tracking-wide mb-2">Installation</h4>
+                  <p className="text-lg">Tool-free setup in under 30 minutes</p>
+                </div>
+                <div className="border-b border-neutral-800 pb-6">
+                  <h4 className="text-sm text-neutral-500 uppercase tracking-wide mb-2">Weight</h4>
+                  <p className="text-lg">450g (0.99 lbs)</p>
                 </div>
               </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Gallery Section */}
-      <section className="py-16 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">Product Gallery</h2>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            <div className="bg-gray-700 rounded-lg h-48 flex items-center justify-center hover:bg-gray-600 transition cursor-pointer">
-              <p className="text-gray-400">Front View</p>
-            </div>
-            <div className="bg-gray-700 rounded-lg h-48 flex items-center justify-center hover:bg-gray-600 transition cursor-pointer">
-              <p className="text-gray-400">Side View</p>
-            </div>
-            <div className="bg-gray-700 rounded-lg h-48 flex items-center justify-center hover:bg-gray-600 transition cursor-pointer">
-              <p className="text-gray-400">In Action</p>
-            </div>
-            <div className="bg-gray-700 rounded-lg h-48 flex items-center justify-center hover:bg-gray-600 transition cursor-pointer">
-              <p className="text-gray-400">Close-up</p>
+              
+              <div className="space-y-8">
+                <div className="border-b border-neutral-800 pb-6">
+                  <h4 className="text-sm text-neutral-500 uppercase tracking-wide mb-2">Construction</h4>
+                  <p className="text-lg">CNC-machined aluminum alloy</p>
+                </div>
+                <div className="border-b border-neutral-800 pb-6">
+                  <h4 className="text-sm text-neutral-500 uppercase tracking-wide mb-2">Bend Range</h4>
+                  <p className="text-lg">Up to 2 full semitones</p>
+                </div>
+                <div className="border-b border-neutral-800 pb-6">
+                  <h4 className="text-sm text-neutral-500 uppercase tracking-wide mb-2">Warranty</h4>
+                  <p className="text-lg">2-year comprehensive coverage</p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className="py-16 px-4 sm:px-6 lg:px-8 bg-gray-800/50">
+      <section id="contact" className="py-24 px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">Get In Touch</h2>
+          <div className="text-center mb-16">
+            <h2 className="text-4xl lg:text-5xl font-light mb-6">Get In Touch</h2>
+            <p className="text-xl text-neutral-400">Questions? We're here to help</p>
+          </div>
+          
           <div className="max-w-2xl mx-auto">
             {formSubmitted && (
-              <Alert className="mb-6 bg-green-600/20 border-green-600">
-                <AlertDescription className="text-green-400">
-                  Thank you for your message! We&#39;ll get back to you soon.
-                </AlertDescription>
-              </Alert>
+              <div className="mb-8 p-4 bg-green-900/20 border border-green-800 rounded-lg">
+                <div className="flex items-center">
+                  <Check className="h-5 w-5 text-green-400 mr-2" />
+                  <span className="text-green-400">Message sent successfully. We'll respond within 24 hours.</span>
+                </div>
+              </div>
             )}
+            
             <div className="space-y-6">
               <div>
-                <label className="block text-sm font-medium mb-2">Name</label>
+                <label className="block text-sm font-medium text-neutral-300 mb-3">Name</label>
                 <input
                   type="text"
                   name="name"
                   value={formData.name}
                   onChange={handleInputChange}
-                  className="w-full px-4 py-2 bg-gray-700 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                  className="w-full px-4 py-4 bg-neutral-900 border border-neutral-800 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all"
                   placeholder="Your name"
                 />
               </div>
+              
               <div>
-                <label className="block text-sm font-medium mb-2">Email</label>
+                <label className="block text-sm font-medium text-neutral-300 mb-3">Email</label>
                 <input
                   type="email"
                   name="email"
                   value={formData.email}
                   onChange={handleInputChange}
-                  className="w-full px-4 py-2 bg-gray-700 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                  className="w-full px-4 py-4 bg-neutral-900 border border-neutral-800 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all"
                   placeholder="your@email.com"
                 />
               </div>
+              
               <div>
-                <label className="block text-sm font-medium mb-2">Message</label>
+                <label className="block text-sm font-medium text-neutral-300 mb-3">Message</label>
                 <textarea
                   name="message"
                   value={formData.message}
                   onChange={handleInputChange}
-                  rows={4}
-                  className="w-full px-4 py-2 bg-gray-700 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none"
-                  placeholder="Tell us about your needs..."
+                  rows={6}
+                  className="w-full px-4 py-4 bg-neutral-900 border border-neutral-800 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all resize-none"
+                  placeholder="How can we help you?"
                 ></textarea>
               </div>
+              
               <button
                 onClick={handleSubmit}
-                className="w-full bg-blue-600 px-6 py-3 rounded-lg hover:bg-blue-700 transition text-lg font-medium flex items-center justify-center"
+                className="w-full bg-white text-black px-8 py-4 rounded-lg hover:bg-neutral-200 transition-all font-medium flex items-center justify-center group"
               >
-                <Send className="h-5 w-5 mr-2" />
+                <Send className="h-5 w-5 mr-2 group-hover:translate-x-1 transition-transform" />
                 Send Message
               </button>
             </div>
-            <div className="mt-12 text-center">
-              <p className="text-gray-400 mb-4">Or reach out directly:</p>
-              <p className="text-lg">info@coatsmusic.com</p>
-              <p className="text-lg">1-800-BENDER-1</p>
+            
+            <div className="mt-16 text-center space-y-4">
+              <div className="text-neutral-500 text-sm uppercase tracking-wide">Direct Contact</div>
+              <div className="space-y-2">
+                <p className="text-lg">info@coatsmusic.com</p>
+                <p className="text-lg">+1 (555) 123-4567</p>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
       {/* Footer */}
-      <footer className="py-8 px-4 sm:px-6 lg:px-8 border-t border-gray-700">
+      <footer className="py-12 px-6 lg:px-8 border-t border-neutral-800">
         <div className="max-w-7xl mx-auto">
-          <div className="flex flex-col md:flex-row justify-between items-center">
-            <div className="flex items-center mb-4 md:mb-0">
-              <Guitar className="h-6 w-6 text-blue-500 mr-2" />
-              <span className="text-gray-400">© 2024 Coats Music. All rights reserved.</span>
+          <div className="flex flex-col lg:flex-row justify-between items-center space-y-6 lg:space-y-0">
+            <div className="flex items-center">
+              <div className="w-8 h-8 bg-gradient-to-r from-blue-600 to-blue-400 rounded-lg flex items-center justify-center mr-3">
+                <span className="text-white font-bold text-sm">B</span>
+              </div>
+              <div>
+                <span className="text-lg font-light">THE BENDER</span>
+                <div className="text-xs text-neutral-500">BY COATS MUSIC</div>
+              </div>
             </div>
-            <div className="flex space-x-6">
-              <a href="#" className="text-gray-400 hover:text-white transition">Privacy Policy</a>
-              <a href="#" className="text-gray-400 hover:text-white transition">Terms of Service</a>
-              <a href="#" className="text-gray-400 hover:text-white transition">Support</a>
+            
+            <div className="flex space-x-8">
+              <a href="#" className="text-neutral-400 hover:text-white transition-colors text-sm">Privacy Policy</a>
+              <a href="#" className="text-neutral-400 hover:text-white transition-colors text-sm">Terms of Service</a>
+              <a href="#" className="text-neutral-400 hover:text-white transition-colors text-sm">Support</a>
             </div>
           </div>
-          <p className="text-center text-sm text-gray-500 mt-4">The Bender™ is a trademark of Coats Music</p>
+          
+          <div className="mt-8 pt-8 border-t border-neutral-800 text-center">
+            <p className="text-neutral-500 text-sm">
+              © 2024 Coats Music. All rights reserved. The Bender™ is a registered trademark.
+            </p>
+          </div>
         </div>
       </footer>
     </div>
