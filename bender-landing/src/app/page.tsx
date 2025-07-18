@@ -64,7 +64,8 @@ const Carousel: React.FC = () => {
    ──────────────────────────────── */
 const Home: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [formData, setFormData] = useState({ name: '', email: '', message: '' });
+  type FormData = { name: string; email: string; message: string };
+  const [formData, setFormData] = useState<FormData>({ name: '', email: '', message: '' });
   const [formSubmitted, setFormSubmitted] = useState(false);
 
   const handleInputChange = (
@@ -92,8 +93,14 @@ const Home: React.FC = () => {
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="flex justify-between items-center h-20">
             <div className="flex items-center">
-              <div className="w-10 h-10 bg-gradient-to-r from-blue-600 to-blue-400 rounded-lg flex items-center justify-center mr-3">
-                <span className="text-white font-bold text-lg">B</span>
+              <div className="w-10 h-10 mr-3">
+                <Image
+                  src="/icon-coats.png"
+                  alt="Coats Music Logo"
+                  width={40}
+                  height={40}
+                  className="w-full h-full object-contain"
+                />
               </div>
               <div>
                 <span className="text-2xl font-light tracking-wide">THE BENDER</span>
@@ -176,7 +183,7 @@ const Home: React.FC = () => {
                 </h1>
 
                 <p className="text-xl text-neutral-400 leading-relaxed max-w-lg">
-                  The world's first non-invasive multi-string guitar bender.&nbsp;
+                  The world&apos;s first non-invasive multi-string guitar bender.&nbsp;
                   Engineered for professionals who demand perfection.
                 </p>
               </div>
@@ -230,7 +237,7 @@ const Home: React.FC = () => {
           </p>
           <p className="text-lg text-neutral-400 leading-relaxed">
             Unlike invasive modifications or bulky attachments, our aerospace‑grade
-            aluminum construction integrates seamlessly with your instrument's natural
+            aluminum construction integrates seamlessly with your instrument&apos;s natural
             resonance. The result? Unprecedented creative possibilities without
             sacrificing tone, comfort, or the integrity of your guitar.
           </p>
@@ -259,7 +266,7 @@ const Home: React.FC = () => {
               <h3 className="text-xl font-medium mb-3">Non-Invasive Installation</h3>
               <p className="text-neutral-400 leading-relaxed">
                 Zero modifications to your instrument. Install in minutes with
-                precision‑engineered clamps that protect your guitar's finish.
+                precision‑engineered clamps that protect your guitar&apos;s finish.
               </p>
             </div>
 
@@ -300,7 +307,7 @@ const Home: React.FC = () => {
           <div className="text-center mb-16">
             <h2 className="text-4xl lg:text-5xl font-light mb-6">See It In Action</h2>
             <p className="text-xl text-neutral-400">
-              Watch professionals demonstrate The Bender's capabilities
+              Watch professionals demonstrate The Bender&apos;s capabilities
             </p>
           </div>
 
@@ -351,7 +358,7 @@ const Home: React.FC = () => {
                 {[
                   { label: 'Compatibility', value: 'Universal fit for electric guitars' },
                   { label: 'Installation', value: 'Tool‑free setup in under 30 minutes' },
-                  { label: 'Weight', value: '450 g (0.99 lbs)' },
+                  { label: 'Weight', value: '450 g (0.99 lbs)' },
                 ].map((item) => (
                   <div key={item.label} className="border-b border-neutral-800 pb-6">
                     <h4 className="text-sm text-neutral-500 uppercase tracking-wide mb-2">
@@ -387,7 +394,7 @@ const Home: React.FC = () => {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-4xl lg:text-5xl font-light mb-6">Get In Touch</h2>
-            <p className="text-xl text-neutral-400">Questions? We're here to help</p>
+            <p className="text-xl text-neutral-400">Questions? We&apos;re here to help</p>
           </div>
 
           <div className="max-w-2xl mx-auto">
@@ -396,18 +403,24 @@ const Home: React.FC = () => {
                 <div className="flex items-center">
                   <Check className="h-5 w-5 text-green-400 mr-2" />
                   <span className="text-green-400">
-                    Message sent successfully. We'll respond within 24&nbsp;hours.
+                    Message sent successfully. We&apos;ll respond within 24&nbsp;hours.
                   </span>
                 </div>
               </div>
             )}
 
             {/* Form */}
-            <div className="space-y-6">
-              {[
+            <form
+              onSubmit={(e) => {
+                e.preventDefault();
+                handleSubmit();
+              }}
+              className="space-y-6"
+            >
+              {([
                 { label: 'Name', type: 'text', name: 'name', placeholder: 'Your name' },
                 { label: 'Email', type: 'email', name: 'email', placeholder: 'your@email.com' },
-              ].map((field) => (
+              ] as const).map((field) => (
                 <div key={field.name}>
                   <label className="block text-sm font-medium text-neutral-300 mb-3">
                     {field.label}
@@ -415,7 +428,7 @@ const Home: React.FC = () => {
                   <input
                     type={field.type}
                     name={field.name}
-                    value={(formData as any)[field.name]}
+                    value={formData[field.name]}
                     onChange={handleInputChange}
                     placeholder={field.placeholder}
                     className="w-full px-4 py-4 bg-neutral-900 border border-neutral-800 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all"
@@ -438,13 +451,13 @@ const Home: React.FC = () => {
               </div>
 
               <button
-                onClick={handleSubmit}
+                type="submit"
                 className="w-full bg-white text-black px-8 py-4 rounded-lg hover:bg-neutral-200 transition-all font-medium flex items-center justify-center group"
               >
                 <Send className="h-5 w-5 mr-2 group-hover:translate-x-1 transition-transform" />
                 Send Message
               </button>
-            </div>
+            </form>
 
             {/* Direct contact */}
             <div className="mt-16 text-center space-y-4">
@@ -465,8 +478,14 @@ const Home: React.FC = () => {
         <div className="max-w-7xl mx-auto">
           <div className="flex flex-col lg:flex-row justify-between items-center space-y-6 lg:space-y-0">
             <div className="flex items-center">
-              <div className="w-8 h-8 bg-gradient-to-r from-blue-600 to-blue-400 rounded-lg flex items-center justify-center mr-3">
-                <span className="text-white font-bold text-sm">B</span>
+              <div className="w-8 h-8 mr-3">
+                <Image
+                  src="/icon-coats.png"
+                  alt="Coats Music Logo"
+                  width={32}
+                  height={32}
+                  className="w-full h-full object-contain"
+                />
               </div>
               <div>
                 <span className="text-lg font-light">THE BENDER</span>
@@ -489,7 +508,7 @@ const Home: React.FC = () => {
 
           <div className="mt-8 pt-8 border-t border-neutral-800 text-center">
             <p className="text-neutral-500 text-sm">
-              © 2024 Coats Music. All rights reserved. The Bender™ is a registered
+              © 2025 Coats Music. All rights reserved. The Bender™ is a registered
               trademark.
             </p>
           </div>
